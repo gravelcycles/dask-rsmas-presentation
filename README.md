@@ -14,7 +14,9 @@ So you just parallelize the algorithm. Easy, right?
 
 In this talk, we will explore the Dask parallelization framework with the goal of writing parallel algorithms on Pegasus. We will cover three main topics:
 
-Basic parallelization with [Dask](https://dask.org/);
-How to configure [dask.distributed](http://distributed.dask.org/en/latest/) on Pegasus;
-Tricks and tips for speeding up your parallel algorithm.
+1. Basic parallelization with [Dask](https://dask.org/)
+2. How to configure [dask.distributed](http://distributed.dask.org/en/latest/) on Pegasus
+3. Tricks and tips for speeding up your parallel algorithm.
+
+
 Please have a version of Anaconda installed and take a look at [Tim Norris’s Introduction to Dask](https://github.com/milancurcic/lunch-bytes/tree/master/Fall_2018/LB18).
