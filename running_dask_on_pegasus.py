@@ -89,16 +89,17 @@ def parallel_func2(dim):
     total = sum(sum(output))
     return total
 if __name__ == "__main__":
-    cluster = LSFCluster(queue='general',  # the queue on Pegasus
+    cluster = LSFCluster(name='worker_bee',
+                         queue='general',  # the queue on Pegasus
                          project='insarlab',  # your project name
                          cores=2,
-                         mem='2GB',              # unused by Pegasus but a required param
-                         walltime='00:30:00',    # how long the worker will run for
+                         memory='2GB',              # unused by Pegasus but a required param
+                         walltime='00:30',       # how long the worker will run for
                          interface='ib0',        # which network to use. NECESSARY PARAM
-    job_extra =['-R "rusage[mem=2500]"',         # how to actually define memory usage
-                "-o WORKER-%J.out"],             # where to write worker output files
-    python_executable_location = sys.executable, # Where to look for Python executable
-    config_name = 'lsf')                          # define your own config in a .yaml file
+                         job_extra=['-R "rusage[mem=2500]"',         # how to actually define memory usage
+                                    "-o WORKER-%J.out"],             # where to write worker output files
+                         python = sys.executable, # Where to look for Python executable
+                         config_name = 'lsf')                          # define your own config in a .yaml file
     cluster.scale(20)
     print("JOB FILE:", cluster.job_script())
 
